@@ -89,6 +89,13 @@ function getProxy() {
 }
 
 const check = debounce(async (retry = 0) => {
+  const now = new Date();
+  const hours = now.getHours();
+
+  if ((hours >= 22 && hours <= 23) || (hours >= 0 && hours <= 7)) {
+    return;
+  }
+
   const res = await superagent
     .post(endpoint)
     .send(params)
@@ -106,7 +113,6 @@ const check = debounce(async (retry = 0) => {
   }
 
   const slots = res.body;
-  const now = Date.now();
   const availableDates = [];
 
   forEach(slots, (places, key) => {
