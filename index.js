@@ -63,7 +63,7 @@ const params = {
 
 const smsClient = twilio(process.env.TWILIO_SID, process.env.TWILIO_TOKEN);
 
-let maxDate = new Date("2020-01-17");
+let maxDate = new Date("2020-01-10");
 
 async function sendAvailableDates(availableDates) {
   maxDate = min(availableDates);
