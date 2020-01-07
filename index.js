@@ -93,6 +93,7 @@ const check = debounce(async (retry = 0) => {
   const hours = now.getHours();
 
   if ((hours >= 22 && hours <= 23) || (hours >= 0 && hours <= 7)) {
+    check();
     return;
   }
 
